@@ -33,7 +33,7 @@ describe('Blog ', function() {
 
 	it('front page can be opened', function() {
 		cy.contains('Login to view your blogs!')
-		cy.contains('Bloglists!')
+		cy.contains('Bloglists - list your fav blogs')
 	})
 
 	describe('Login', function() {
