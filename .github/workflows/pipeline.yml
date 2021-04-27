@@ -47,3 +47,18 @@ jobs:
         with:
           name: cypress-screenshots
           path: bloglist-frontend/cypress/screenshots
+      - name: build front
+        run: |
+          rm -rf build
+          cd bloglist-frontend/ && npm run build
+          cp -a build ../build
+          cd .. && ls -la
+      - name: deploy
+        if: ${{ github.event_name === 'push' && !contains(join(toJson(github.event.commits.*.message), ' '), '#skip') }}
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_email: "pia.m.andersin@gmail.com" 
+          heroku_app_name: "gentle-hamlet-05272" 
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          healthcheck: "https://gentle-hamlet-05272.herokuapp.com/health"
+          rollbackonhealthcheckfailed: true
