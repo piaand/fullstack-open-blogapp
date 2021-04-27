@@ -62,3 +62,10 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           healthcheck: "https://gentle-hamlet-05272.herokuapp.com/health"
           rollbackonhealthcheckfailed: true
+      - uses: actions/checkout@v2
+      - name: Bump version and push tag
+        if: ${{ github.event_name == 'push' && !contains(join(toJson(github.event.commits.*.message), ' '), '#skip') }}
+        uses: anothrNick/github-tag-action@1.33.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch

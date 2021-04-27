@@ -46,7 +46,7 @@ const App = () => {
 	return (
 		<Container>
 			<Header />
-			<h1>Bloglists!</h1>
+			<h1>Bloglists - list your fav blogs</h1>
 			<Notification />
 			<Switch>
 				<Route path='/users/:id'>
