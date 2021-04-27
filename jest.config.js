@@ -1,3 +1,4 @@
 module.exports = {
-	testEnvironment: 'node'
+	testEnvironment: 'node',
+	modulePathIgnorePatterns: ['node_modules', 'build', 'bloglist-frontend']
 }

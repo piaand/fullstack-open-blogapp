@@ -23,3 +23,13 @@ jobs:
         run: cd bloglist-frontend/ && npm install
       - name: lint
         run: npm run lint && cd bloglist-frontend/ && npm run lint
+      - name: unit test frontend
+        run: cd bloglist-frontend/ && CI=true npm test
+      - name: unit test backend
+        run: npm run test
+      - name: e2e testing
+        uses: cypress-io/github-action@v2
+        with:
+          command: npm run test:e2e
+          start: npm run start:test && cd bloglist-frontend/ && npm start
+          wait-on: http://localhost:3000
