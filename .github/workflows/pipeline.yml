@@ -1,0 +1,23 @@
+name: Bloglist app pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+  
+
+jobs:
+  deployment_pipeline:
+    runs on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '15.x'
+      - name: npm install
+        run: npm install
+      - name: lint
+        run: npm run lint && cd bloglist-frontend/ && npm run lint
