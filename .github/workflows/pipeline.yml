@@ -40,5 +40,5 @@ jobs:
           command: npm run test:e2e
           start: | 
             npm run start:test
-            ( cd bloglist-frontend/ && npm start )
+            npm run start:front
           wait-on: 'http://localhost:3000'
