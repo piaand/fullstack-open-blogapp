@@ -54,7 +54,7 @@ jobs:
           cp -a build ../build
           cd .. && ls -la
       - name: deploy
-        if: ${{ github.event_name === 'push' && !contains(join(toJson(github.event.commits.*.message), ' '), '#skip') }}
+        if: ${{ github.event_name == 'push' && !contains(join(toJson(github.event.commits.*.message), ' '), '#skip') }}
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_email: "pia.m.andersin@gmail.com" 
