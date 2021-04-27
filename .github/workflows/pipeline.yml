@@ -17,7 +17,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '15.x'
-      - name: npm install
+      - name: npm install backend 
         run: npm install
+      - name: npm install frontend
+        run: cd bloglist-frontend/ && npm install
       - name: lint
         run: npm run lint && cd bloglist-frontend/ && npm run lint
