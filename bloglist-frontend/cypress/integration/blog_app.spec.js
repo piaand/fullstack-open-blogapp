@@ -74,7 +74,7 @@ describe('Blog ', function() {
 		it('Creator of blog can remove a blog', function() {
 			cy.createBlog({ title: blog.title, author: blog.author, url: blog.url })
 			cy.get('header').contains('blogs').click()
-			cy.get('button').contains('See full view').click()
+			cy.contains('full view').click()
 			cy.get('.extendedBlogInfo').contains('remove').click()
 			cy.on('window:confirm', () => true)
 			cy.contains('view').should('not.exist')
