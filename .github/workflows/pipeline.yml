@@ -37,7 +37,7 @@ jobs:
       - name: e2e testing
         uses: cypress-io/github-action@v2
         with:
-          command: npm run test:e2e
+          command: cd bloglist-frontend/ && npm run test:e2e
           start: | 
             npm run start:test
             npm run start:front
